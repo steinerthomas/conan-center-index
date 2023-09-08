@@ -284,7 +284,7 @@ class Libxml2Conan(ConanFile):
             self._build_mingw()
         else:
             autotools = Autotools(self)
-            autotools.configure()
+            autotools.configure(args=["--host={}".format(self.settings.arch)])
             autotools.make("libxml2.la")
 
             if self.options.include_utils:
